@@ -1,0 +1,7 @@
+//Write a SOQL SELECT statement to
+//retrieve the Name, CreatedBy.Name and Year_Built fields 
+//for all Boat records where the CreatedBy.Name is Jon Snow 
+//and Year_Built is Before LAST_YEAR.
+
+SELECT Name, CreatedBy.Name, Year_Built__c FROM Boat__c
+WHERE CreatedBy.Name='Jon Snow' AND Year_Built__c < LAST_YEAR

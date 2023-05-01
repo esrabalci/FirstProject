@@ -1,0 +1,2 @@
+//Write a SOQL query to retrieve the maximum Amount for all Opportunity records.
+SELECT MAX(Amount) FROM Opportunity

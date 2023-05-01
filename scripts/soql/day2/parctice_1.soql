@@ -1,0 +1,29 @@
+// Feel free to use SOQL Building(by flipping the page)
+// to observe what's the correct Object name and fields names 
+
+
+// Get All the Profiles Id, Name fields 
+// if the profile name is 
+// System Administator, Standard User , Standard Platform User
+
+//SELECT  Id, Name
+//FROM Profile
+//WHERE Name IN ('System Administrator','Standard User','Standard Platform User')
+
+
+// Get All the Role , Id, Name From Role Standard Object 
+//SELECT Id, Name, DeveloperName
+//FROM UserRole
+
+// Get All the RecordType , Id, Name,DeveloperName  From RecordType Standard Object 
+//SELECT Id, Name, DeveloperName
+//FROM RecordType
+
+//this is where all public groups, queues stored
+//SELECT Id, DeveloperName,Type
+//FROM Group
+
+SELECT  Id, Author__c, Price__c, Description__c, Year__c
+FROM Book__c
+WHERE Description__c != NULL
+OR Price__c != NULL 

@@ -1,0 +1,41 @@
+// Count(field-->id)
+//SELECT COUNT(Id)  FROM Opportunity
+
+//count distinct function
+//SELECT COUNT_DISTINCT(Name) FROM Opportunity
+
+//find out sum of count of account max,min annual revenue
+//and count disntict of name
+//SELECT COUNT(Id), COUNT_DISTINCT(Name), SUM(AnnualRevenue),
+// MAX(AnnualRevenue), MIN(AnnualRevenue), AVG(AnnualRevenue)
+//FROM Account
+
+//find count the opportunites in cloosed won Stage
+//SELECT COUNT(id) FROM Opportunity
+//WHERE StageName =  'Closed Won'
+
+
+//----------- grouping by aggregate 
+//if you see  something wants EACH that means grouping by
+
+//if you use aggregate function with any additional field in Select line
+//it must be Grouped by that field or it will not work
+//Anytime you add any new field other than the field in group by , it will NOT work!!!
+//as long as it does not show up in group by field list
+
+//get the opportunity count and sum of Amount for each stage
+//SELECT StageName, COUNT(Id), SUM(Amount)  FROM Opportunity
+//GROUP BY StageName 
+
+//--------------------------------------------------------------
+
+//get the count of leads of each LeadSource
+//SELECT LeadSource,COUNT(id) FROM Lead
+//GROUP BY LeadSource
+
+//--------------------------------------------------------------
+
+//get the count of Leads of each State
+SELECT State ,COUNT(id) FROM Lead
+GROUP BY State
+

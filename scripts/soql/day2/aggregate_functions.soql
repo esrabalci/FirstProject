@@ -1,0 +1,18 @@
+//https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_agg_functions.htm
+// how do i count something for example in opportunity?
+//see average, sum in our opportunity
+//call aggregate functions ->it meant to give you group of something
+//  For average -->Avg(Amount)
+//  For count -->how many item we have --> Count()
+
+//Count()--> how many item we have
+// id is unique , id is most reliable count something
+//you cannot select the field after using Count
+//get the sum all the amount
+//--> what field are we adding in the sum --> amount
+//MAX(amount)
+//Count Distinct() -> count unique number in the org -->not null
+//want to count unique name in the opp
+
+SELECT  COUNT(Id),COUNT_DISTINCT(Name) ,SUM(Amount),MAX(Amount), MIN(Amount), AVG(Amount)
+FROM Opportunity

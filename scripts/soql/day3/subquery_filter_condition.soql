@@ -1,0 +1,69 @@
+//     SubQuery --> query inside query
+//Using subquery to filter Parent using Child record condition
+
+
+// Get the Name of The Account 
+//if it has child contact with Last Name Forbes
+
+// STEP 1  
+//find out the account Id of the contact that has last name forbes
+
+// AccountId-> gives you AccountId of the Contact within last name is forbes
+//it gives us id --> 001Dm00000BNUqUIAX
+// we found out the which account belong to (Edge Communications)--> contacts: Sean Forbes
+// SELECT AccountId FROM Contact WHERE LastName = 'Forbes'
+
+// STEP 2 
+
+//get the name of an Account that we found earlier the ID
+// we found out Edge Communications .
+// found out which account this contact with forbes belong to
+// SELECT Name FROM Account WHERE Id = '001Dm00000BNUqUIAX'
+
+//Final Step
+
+//to get this Id without using id itself --> step1
+//SELECT Name FROM Account
+//WHERE Id IN ( SELECT AccountId FROM Contact WHERE LastName='Forbes')
+
+// get all the last name stars with F 
+//SELECT Name FROM Account
+//WHERE Id IN ( SELECT AccountId FROM Contact WHERE LastName LIKE 'F%')
+
+//-----------------------------------------------------------------------------
+
+// Get All the Account Names if the child Contacts FirstName and LastName starts with F 
+// Also display all the contacts along with LastName starts with F
+
+//SELECT Name, (SELECT FirstName, LastName FROM Contacts WHERE LastName LIKE 'F%') FROM Account
+//WHERE Id IN (SELECT AccountId FROM Contact WHERE LastName LIKE 'F%')
+
+//-----------------------------------------------------------------------------
+
+
+// Get All The Account with Opportunity
+
+
+//to find out some Account has opportunity first for the relationship
+// Account-> Parent  , Opportunity->Child
+//if opportunity is child then it has a field call AccountId
+//to get account name (child to parent) ->Account.Name
+//SELECT Name, AccountId, Account.Name FROM Opportunity --> gives us list of oppotunity has and has NOT an account
+
+// STEP 1 
+// SELECT AccountId
+// FROM Opportunity
+
+//Step2
+
+// to get account JUST HAS opportunity
+//if accountID belong to one of AccountId that means they have an opportunity
+// This will return all the Account Name with Opportunity
+
+//SELECT Name FROM Account
+//WHERE Id IN (SELECT AccountId FROM Opportunity)
+
+// This will return all the Account Name without Opportunity
+SELECT Name
+FROM Account
+WHERE Id NOT IN (  SELECT AccountId FROM Opportunity)

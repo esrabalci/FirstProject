@@ -1,0 +1,33 @@
+//child to parent --> ObjectName__r.fieldName from the child
+//parent to child --> sub query or a nested query that indicating that
+// you're putting a query inside another query. this is how work for  parent~child query.
+//ex; we want to get all the account meantime you want to get all the contact that associated with the accounts
+//you're selecting account but also you want to get the child which is the contact
+
+// we are looking at account from the contact because account-> parent
+//in subquery we dont use object's field name , we use child rlationship name
+//     object's field name--> Contact         ,  child rlationship name--> Contacts
+
+//get all the account name and 
+//name and email of contacts associated with those account from acount object
+//SELECT Name, (SELECT Name, Email FROM Contacts) FROM Account ORDER BY CreatedDate ASC
+
+//-----------------------------------------------------------------------------
+
+// get all account Name and 
+//every Subject of Cases associated with those account
+//from Account Object
+
+//Account--> Parent , Case-->Child
+//SELECT Name, (SELECT Subject FROM Cases)  FROM Account
+//ORDER BY CreatedDate ASC
+
+//-----------------------------------------------------------------------------
+
+//contact --> Parent , case-->Child (because case has a look up field to contact)
+//Get all contact name amd
+//every Case Subject, Status of Cases associated with those Contact
+//from Contact Object
+SELECT Name, (SELECT Subject, Status FROM Cases) FROM Contact
+
+

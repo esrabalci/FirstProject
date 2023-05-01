@@ -1,0 +1,6 @@
+//Write a SOQL SELECT statement to retrieve
+//the Account Name, Child Opportunity with StageName is Closed Won,
+// for all Account records, only return those accounts with Closed Won Opportunities as child records
+
+SELECT Name, (SELECT StageName FROM Opportunities WHERE StageName ='Closed Won') FROM Account
+WHERE Id IN (SELECT AccountId FROM Opportunity WHERE StageName='Closed Won')

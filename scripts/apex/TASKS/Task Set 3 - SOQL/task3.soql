@@ -1,0 +1,5 @@
+//Write a SOQL query to retrieve the average NumberOfEmployees 
+//for all Account records where the Industry is 'Technology'.
+
+SELECT AVG(NumberOfEmployees) FROM Account
+WHERE Industry ='Technology'

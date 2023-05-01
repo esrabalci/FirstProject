@@ -1,0 +1,97 @@
+//Get all Contact Name and Account Name that contact belong to
+//Filter the contact to only show contact with Account
+
+//child to parent query
+//you selecting child -->Contact 
+//including parent field -->Account
+
+//SELECT Name, Account.Id, Account.Name
+//FROM Contact
+//where AccountId != NULL
+
+//--------------------------------------------------
+
+//case belong to certain account
+// get the all Case Subject and account name that case belong to
+//filter the case only have account name
+
+//SELECT Subject, Account.Name
+//FROM Case
+//WHERE Account.Name !=NULL
+
+//--------------------------------------------------
+
+//get all the case records Subject and Account Name
+//that belong to account with name starts with United
+
+//SELECT  Subject, Account.Name
+//FROM Case
+//WHERE Account.Name LIKE 'United%'
+
+//--------------------------------------------------
+
+//access parent from child
+
+
+//SELECT Subject, Account.Name , Contact.Name
+//FROM Case
+//WHERE Account.Name LIKE 'United%'
+
+//--------------------------------------------------
+
+//get the user full name whoever created the field
+//child to parent you can access everything in the parent object
+
+//SELECT  Subject, Account.Name , Contact.Name , CreatedBy.Name
+//FROM Case
+//WHERE Account.Name LIKE 'United%'
+
+//--------------------------------------------------
+
+// get all opportunity Name, Owner Name, Account Name from opportunity
+// owner --> user object
+//child to parent relationship
+//SELECT Name, Owner.Name, Account.Name 
+//FROM Opportunity
+
+//--------------------------------------------------
+// __r -->for custom relationship field
+// custom object related to cotiniue to acess relationship --> __r
+//book --> custom object
+//child to parent  --> book object --> we access 
+//each account has created by someone --> standard object
+//who created the record -->CreatedBy.Name
+//owner can be someone because we can change the owner
+//Contact ==>lookup ==> ID
+//Contact look up field --> book object(parent) 
+//Child Relationship name-> Books -->go contact lookup from fields&relaationship scroll down
+//standar object is easy to access parent just put . 
+//look up object -->Contact__c --> access parent --> __r(double underscore r) --> Contact__r.WHATFIELDYOUARELOOKING
+//access contact who own the record--> Contact__r.Name
+//access custom relationship field
+
+//sort by name and if there is no value (null)put at the end -->Order by
+// IF UOU WANT TO SORT SOMETHING put in the selecting sectiom on the top
+//SELECT Name, Price__c, CreatedBy.Name, Contact__r.Name
+//FROM Book__c
+//ORDER BY Contact__r.Name ASC NULLS LAST
+
+//--------------------------------------------------
+
+// sort price on the top if they have the value -->NULLS LAST
+//SELECT Name, Price__c,Contact__r.Name
+//FROM Book__c
+//ORDER BY Contact__r.Name DESC NULLS LAST
+
+//--------------------------------------------------
+
+// Get All the Books Name, Price, Contact Name 
+// Sort the result by Conact Name and show empty values on the botton 
+// Filter the result to show only Books with Contact Name Snow 
+
+SELECT Name, Price__c,Contact__r.Name
+FROM Book__c
+WHERE Contact__r.Name='Snow'
+
+
+

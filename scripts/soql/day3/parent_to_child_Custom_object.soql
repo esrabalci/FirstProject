@@ -1,0 +1,38 @@
+
+                //SOQL Relationship Query
+
+//Child to Parent Relationship Query  
+   //SELECT Name, Account.Name from Contact     ->STANDARD OBJECT
+   //SELECT Name, Contact__r.Name from Book__c  -> CUSTOM OBJECT
+
+//---------------------------------------
+
+//      Parent to Child Relationship Query 
+
+//Select from Parent object including all child records
+    //SELECT Name, (SELECT Name FROM Contacts) FROM Account  ->STANDARD OBJECT
+    //SELECT Name, (SELECT Name FROM Books__r) FROM Contact  -> CUSTOM OBJECT
+
+
+
+
+//       Parent to Child Object for CUSTOM OBJECT
+
+
+//Get all the Contact Name
+// and Book Name, Price of Books associated with those Contact
+//from Contact Object
+
+//books__r --> books is relationship object of custom object-->__r
+// price__c --> is custom object of book --> __c
+SELECT Name, (SELECT Name, Price__c FROM books__r)  FROM Contact ORDER BY CreatedDate DESC
+
+
+
+
+
+
+
+
+
+
