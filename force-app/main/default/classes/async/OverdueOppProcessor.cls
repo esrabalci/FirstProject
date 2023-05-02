@@ -1,7 +1,14 @@
 // you can  use Database.Batchable<YourSpecificSObjectType> instead of Database.Batchable<sObject>
 // only if you return Iterable<YourSpecificSObjectType> instead of Database.QueryLocator
 // for the start method , otherwise it will not compile 
-public class OverdueOppProcessor implements Database.Batchable<sObject>{
+public class OverdueOppProcessor implements Database.Batchable<sObject> , Database.Stateful{
+
+    //create a instance variable to keep track of total number of record processed
+    //it will get incremented in each batches
+    Integer totalProcessed=0;
+    //a variable to keep track of batch number and increment in ach batches
+    Integer batchNumber = 0;
+
     
 
     public Database.QueryLocator start(Database.BatchableContext bc){
@@ -10,14 +17,21 @@ public class OverdueOppProcessor implements Database.Batchable<sObject>{
         
 
         return Database.getQueryLocator('SELECT Id,StageName FROM Opportunity '+
-                                        +' WHERE CreatedDate=YESTERDAY'); 
+                                        +' WHERE CreatedDate=TODAY'); 
 
     }
 
     public void execute(Database.BatchableContext bc ,List<Opportunity> recordsInBatch){
-
-        System.debug('Processing ' +recordsInBatch.size() + ' records here'); 
         
+       //increment batch number by 1 so we can see useful message
+       ++batchNumber;
+
+
+        System.debug('Batch number ' + batchNumber +' Processing ' +recordsInBatch.size() + ' records here'); 
+        
+        
+         totalProcessed+=recordsInBatch.size();
+
 
         List<Opportunity> updatedOpps = new List<Opportunity>(); 
 
@@ -51,7 +65,8 @@ public class OverdueOppProcessor implements Database.Batchable<sObject>{
                         + ' Status is ' + result.Status
                         + ' Number of Error is ' + result.NumberOfErrors
                         + ' JobItemsProcessed is ' + result.JobItemsProcessed
-                        + ' TotalJobItems is ' + result.TotalJobItems ; 
+                        + ' TotalJobItems is ' + result.TotalJobItems
+                        + ' Total record processed ' + totalProcessed ; 
         
         String subject = 'The job with Id ' + jobId +  ' is ' + result.Status ;
 
