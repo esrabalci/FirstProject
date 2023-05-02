@@ -23,9 +23,8 @@ private class ScheduledTaskCleanUpTest {
     Schedulable stc = new ScheduledTaskCleanUp();
     System.schedule('Task cleanup', '0 0 0 15 3 ? 2042', stc);
 
-
-
-
+    List<Task> theTasksBeforeScheduleRun = [Select Id from Task WHERE Status = 'Completed'];
+     Assert.areEqual(0, theTasksBeforeScheduleRun.size() );
 
     Test.stopTest(); // after this line scheduled apex code will forced to run right away
 
