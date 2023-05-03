@@ -9,6 +9,7 @@
     "downcasting",
     "instanceof",
     "picklist",
+    "Queueable",
     "Rollable",
     "Schedulable",
     "SOQL",
