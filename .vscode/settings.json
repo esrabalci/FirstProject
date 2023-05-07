@@ -11,6 +11,7 @@
     "picklist",
     "Queueable",
     "Rollable",
+    "Savepoint",
     "Schedulable",
     "SOQL",
     "undelete",
