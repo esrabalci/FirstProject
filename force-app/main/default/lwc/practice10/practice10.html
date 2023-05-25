@@ -1,0 +1,37 @@
+<template>
+
+
+    <lightning-card title="Practice 10 - ForEach" icon-name="utility:loop">  
+      <div class="slds-var-m-around_medium">
+
+
+  <!-- short cut : ul>li*1000{item $$$} --> <!-- item is repeat  -->
+       <!-- <ul>
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+        <li>item 4</li>
+        <li>item 5</li>
+       </ul> -->
+
+       <ul>
+            <template for:each={foodArray} for:item="each" >
+                <!-- right at he first line after declaring forEach directive
+                the first element must have an attribute called key and value as unique value -->
+               <li key={each.Id}>
+                    The name of the food is {each.foodName} and calorie is : {each.calories}
+               </li>
+            </template>
+
+
+       </ul>
+  
+
+    
+  </div>
+  
+    </lightning-card>
+  
+  
+  </template>
+  
