@@ -1,0 +1,36 @@
+<template>
+  <lightning-card title="Practice 11" icon-name="standard:search">
+    <div class="slds-var-m-around_medium">
+
+      <!-- adding the search box -->
+      <lightning-input
+        type="search"
+        label="Search Food"
+        placeholder="type here..."
+        value={searchKey}
+        onchange={handleSearchKeyChange}
+      ></lightning-input>
+
+      <!-- Conditionally display a paragraph element to show what user  typed -->
+       <template lwc:if={searchKey}>
+            <p>You are searching for {searchKey}</p>
+       </template>
+
+       <!-- Display foodArray in div tag with slds-box class -->
+       <template for:each={filteredFoods} for:item="each">
+        <!-- very first element for each directive must have
+    an attribute called key and point to unique identifier to each element in the array
+    since each element here is object, we can access the field value using
+    each.theFieldName -->
+        <div key={each.id} class="slds-box slds-box_x-small">
+     
+            The Food : {each.foodName}  Calorie is {each.calories}
+           </div>
+       </template>
+
+      
+
+
+    </div>
+  </lightning-card>
+</template>

@@ -6,6 +6,8 @@
   },
   "cSpell.words": [
     "Batchable",
+    "cacheable",
+    "datatable",
     "downcasting",
     "Esra",
     "instanceof",
@@ -14,6 +16,7 @@
     "Rollable",
     "Savepoint",
     "Schedulable",
+    "slds",
     "SOQL",
     "undelete",
     "upsert"
