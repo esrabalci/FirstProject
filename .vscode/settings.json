@@ -20,7 +20,8 @@
     "slds",
     "SOQL",
     "undelete",
-    "upsert"
+    "upsert",
+    "whatevername"
   ],
   "salesforcedx-vscode-core.retrieve-test-code-coverage": true
 }

@@ -6,8 +6,8 @@
       <div class="slds-var-m-around_medium">
         <!-- get a list of account and display a account name and delete icon -->
   
-        <template lwc:if={allAccounts}>
-          <template for:each={allAccounts} for:item="each">
+        <template lwc:if={allAccounts.data}>
+          <template for:each={allAccounts.data} for:item="each">
   
           <lightning-layout key={each.Id}>
               <lightning-layout-item size ="11" padding="around-small">
@@ -35,3 +35,8 @@
       
     </lightning-card>
   </template>
+
+
+
+
+  <!-- icon-name="action:delete" -->
