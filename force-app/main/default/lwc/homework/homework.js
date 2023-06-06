@@ -16,9 +16,9 @@ export default class practice17Homework4 extends LightningElement {
   handleSliderChange(event) {
     this.sliderValue = event.detail.value;
     console.log(event)
-    console.log(JSON.stringify(event, null, 2));
-    console.log(JSON.stringify(event.target, null, 2));
-    console.log(JSON.stringify(event.detail, null, 2));
+    // console.log(JSON.stringify(event, null, 2));
+    // console.log(JSON.stringify(event.target, null, 2));
+    // console.log(JSON.stringify(event.detail, null, 2));
     
   }
 
